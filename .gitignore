@@ -1,0 +1,6 @@
+node_modules/
+
+packages/frontend/.cache
+packages/frontend/dist
+
+packages/backend/public
