@@ -9,6 +9,7 @@ import { Link, Redirect } from "react-router-dom";
 export default function LoginPage() {
   const [handle, setHandle] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const { state, dispatch } = useContext<ContextType>(StateContext);
 
   const [open, setOpen] = React.useState(false);
@@ -21,7 +22,7 @@ export default function LoginPage() {
     evt.preventDefault();
 
     try {
-      const user = await register(handle, password);
+      const user = await register(handle, password, email);
       dispatch({
         type: "setUser",
         payload: user,
@@ -75,6 +76,15 @@ export default function LoginPage() {
                     placeholder="Password"
                     value={password}
                     onChange={(evt) => setPassword(evt.target.value)}
+                  />
+                </FormControl>
+                <FormControl fullWidth>
+                  <Input
+                    type="email"
+                    id="email"
+                    placeholder="email"
+                    value={email}
+                    onChange={(evt) => setEmail(evt.target.value)}
                   />
                 </FormControl>
                 <FormControl fullWidth>
